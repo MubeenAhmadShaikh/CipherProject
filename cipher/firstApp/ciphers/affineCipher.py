@@ -17,3 +17,5 @@ def affineEnc(plaintext,key):
 def affineDec(plaintext,key):
     dec = cipher.decrypt(plaintext, key, alphabet)
     return dec
+
+
