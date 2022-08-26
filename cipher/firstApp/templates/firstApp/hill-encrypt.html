@@ -38,13 +38,13 @@
 
             <!-- Input:Password -->
             <div class="form__field">
-            <label for="formInput#password">Enter the key: </label>
+            <label for="formInput#password">Enter the key matrix: </label>
             <input
                 class="input input--password"
                 id="formInput#passowrd"
                 type="text"
                 name="key"
-                placeholder="Enter key separated by space"
+                placeholder="Enter key matrix separated by space"
             />
             </div>
             <div class="auth__actions">
@@ -56,6 +56,9 @@
         <div class="auth__alternative">
             <p>Want to Decrypt a Message?</p>
             <a href="{% url 'hill-decrypt' %}">Decrypt</a>
+        </div>
+        <div style="margin-top: 2em;">
+            <h6 class="text-center">Find the code on <a href="https://github.com/MubeenAhmadShaikh/CipherProject/">GitHub</a></h6>
         </div>
         
         </div>
