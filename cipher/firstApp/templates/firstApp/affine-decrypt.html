@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+{% load static%}
+{% block content %}
+<div class="auth">
+    <div class="card">
+    <h6 class="">Try <a href="{% url 'hill-encrypt' %}">Hill Cipher</a> </h6>
+      <div class="auth__header text-center">
+        <a href="/">
+          <img src="{% static 'images/icon.svg' %}" alt="icon" />
+        </a>
+        <h3>Affine Cipher</h3>
+        {% if decoded %}
+        <p>Here is your decrypted message!</p>
+        {% else %}
+        <p>Want to decrypt a message with Affine Cipher Try this!</p>
+        {% endif %}
+      </div>
+
+      
+        <!-- Input:Email -->
+        
+        {% if decoded %}
+        <h5></h5>
+        <h5 style="margin:1em 0 ;">{{decoded}}</h5>
+        {% else %}
+        <form action="#" method="POST" class="form auth__form">
+            {% csrf_token %}
+              <div class="form__field">
+              <label for="formInput#text">Message: </label>
+              <input
+                  class="input input--text"
+                  id="formInput#text"
+                  type="text"
+                  name="message"
+                  placeholder="Enter decrypted message"
+              />
+              </div>
+  
+              <!-- Input:Password -->
+              <div class="form__field">
+              <label for="formInput#password">First Key: </label>
+              <input
+                  class="input input--password"
+                  id="formInput#passowrd"
+                  type="text"
+                  name="a"
+                  placeholder="Enter first key "
+              />
+              </div>
+              <!-- Input:Password -->
+              <div class="form__field">
+              <label for="formInput#password">Second key: </label>
+              <input
+                  class="input input--password"
+                  id="formInput#passowrd"
+                  type="text"
+                  name="b"
+                  placeholder="Enter second key"
+              />
+              </div>
+              <div class="auth__actions">
+              <input class="btn btn--sub btn--lg" type="submit" value="Decrypt"/>
+              
+              </div>
+          </form>
+        {% endif %}
+        <div class="auth__alternative">
+            <p>Want to Encrypt a Message?</p>
+            <a href="{% url 'affine-encrypt' %}">Encrypt</a>
+        </div>
+        </div>
+  </div>
+{% endblock content%}

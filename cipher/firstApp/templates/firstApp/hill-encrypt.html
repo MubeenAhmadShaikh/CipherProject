@@ -1,0 +1,63 @@
+{% extends 'main.html'%}
+{% load static%}
+{% block content %}
+<div class="auth">
+  <div class="card">
+      <h6 class="">Try <a href="{% url 'affine-encrypt' %}">Affine Cipher</a> </h6>
+      <div class="auth__header text-center">
+        <a href="/">
+          <img src="{% static 'images/icon.svg' %}" alt="icon" />
+        </a>
+        <h3>Hill Cipher</h3>
+        {% if encoded %}
+        <p>Here is your encrypted message!</p>
+        {% else %}
+        <p>Want to encrypt a message with Hill Cipher Try this!</p>
+        {% endif %}
+      </div>
+
+      
+        <!-- Input:Email -->
+        
+        {% if encoded %}
+        <h5></h5>
+        <h5 style="margin:1em 0 ;">{{encoded}}</h5>
+        {% else %}
+        <form action="#" method="POST" class="form auth__form">
+          {% csrf_token %}
+            <div class="form__field">
+            <label for="formInput#text">Message: </label>
+            <input
+                class="input input--text"
+                id="formInput#text"
+                type="text"
+                name="message"
+                placeholder="Enter message to encrypt..."
+            />
+            </div>
+
+            <!-- Input:Password -->
+            <div class="form__field">
+            <label for="formInput#password">Enter the key: </label>
+            <input
+                class="input input--password"
+                id="formInput#passowrd"
+                type="text"
+                name="key"
+                placeholder="Enter key separated by space"
+            />
+            </div>
+            <div class="auth__actions">
+            <input class="btn btn--sub btn--lg" type="submit" value="Encrypt"/>
+            
+            </div>
+        </form>
+        {% endif %}
+        <div class="auth__alternative">
+            <p>Want to Decrypt a Message?</p>
+            <a href="{% url 'hill-decrypt' %}">Decrypt</a>
+        </div>
+        
+        </div>
+  </div>
+{% endblock content%}
